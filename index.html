@@ -9,9 +9,11 @@
       --bg: #ffffff;
       --fg: #000000;
     }
-    [data-theme="dark"] {
-      --bg: #000000;
-      --fg: #ffffff;
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --fg: #ffffff;
+      }
     }
     * {
       box-sizing: border-box;
@@ -23,22 +25,6 @@
       background: var(--bg);
       color: var(--fg);
       line-height: 1.6;
-    }
-    #theme-btn {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      background: var(--bg);
-      color: var(--fg);
-      border: 1px solid var(--fg);
-      padding: 4px 12px;
-      font-family: inherit;
-      font-size: 12px;
-      cursor: pointer;
-      text-transform: lowercase;
-    }
-    #theme-btn:hover {
-      text-decoration: underline;
     }
     .wrap {
       max-width: 640px;
@@ -81,11 +67,85 @@
 </head>
 <body>
 
-  <button id="theme-btn" onclick="toggleTheme()">theme</button>
-
   <div class="wrap" id="app">
-    <div style="font-size:18px;font-weight:700;margin-bottom:32px;border-bottom:1px solid var(--fg);padding-bottom:8px;">
+    <div style="font-size:18px;font-weight:700;margin-bottom:32px;padding-bottom:8px;">
       caw
+    </div>
+
+    <div class="category">
+      <div class="category-name">search & discovery</div>
+      <div class="entry"><a href="https://wiby.me/">wiby</a> <span class="desc">wiby - search engine for lightweight, text-centric web pages.</span></div>
+      <div class="entry"><a href="https://search.marginalia.nu/">marginalia search</a> <span class="desc">marginalia search - diy search engine indexing text-heavy, non-commercial websites.</span></div>
+      <div class="entry"><a href="http://frogfind.com/">frogfind</a> <span class="desc">frogfind - strips search results down to basic, ultra-lightweight html.</span></div>
+      <div class="entry"><a href="https://lite.duckduckgo.com/lite/">duckduckgo lite</a> <span class="desc">duckduckgo lite - official html-only, javascript-free version of duckduckgo.</span></div>
+      <div class="entry"><a href="https://1mb.club/">the 1mb club</a> <span class="desc">the 1mb club - directory of websites that weigh less than 1 megabyte.</span></div>
+      <div class="entry"><a href="https://1kb.club/">1kb club</a> <span class="desc">1kb club - directory of highly optimized websites under 1 kilobyte.</span></div>
+      <div class="entry"><a href="https://250kb.club/">250kb club</a> <span class="desc">250kb club - registry showcasing minimalist web designs under 256 kilobytes.</span></div>
+      <div class="entry"><a href="https://512kb.club/">512kb club</a> <span class="desc">512kb club - showcase of clean websites under half a megabyte.</span></div>
+      <div class="entry"><a href="https://no-js.club/">no-js club</a> <span class="desc">no-js club - directory of sites that function entirely without javascript.</span></div>
+    </div>
+
+    <div class="category">
+      <div class="category-name">video, audio & media frontends</div>
+      <div class="entry">
+        <a href="https://invidious.io/">invidious</a><span class="sep">/</span><a href="https://yewtu.be/">yewtu.be</a><span class="sep">/</span><a href="https://invidious.nerdvpn.de/">invidious.nerdvpn.de</a> 
+        <span class="desc">invidious / instances: yewtu.be, invidious.nerdvpn.de - ad-free, lightweight youtube frontends.</span>
+      </div>
+      <div class="entry">
+        <a href="https://piped.video/">piped</a><span class="sep">/</span><a href="https://piped.video/">piped.video</a><span class="sep">/</span><a href="https://piped.kavin.rocks/">piped.kavin.rocks</a> 
+        <span class="desc">piped / instances: piped.video, piped.kavin.rocks - privacy-friendly, resource-efficient youtube frontends.</span>
+      </div>
+      <div class="entry"><a href="https://tube.cadence.moe/">cloudtube</a> <span class="desc">cloudtube - minimal web interface alternative for youtube.</span></div>
+      <div class="entry"><a href="https://poketube.fun/">poketube</a> <span class="desc">poketube - lightweight frontend for watching youtube video streams.</span></div>
+      <div class="entry"><a href="https://hyperpipe.surge.sh/">hyperpipe</a> <span class="desc">hyperpipe - snappy, low-bloat interface for youtube music.</span></div>
+    </div>
+
+    <div class="category">
+      <div class="category-name">social, forums & communities</div>
+      <div class="entry"><a href="https://lobste.rs/">lobste.rs</a> <span class="desc">lobste.rs - minimalist link aggregator for computing and tech discussions.</span></div>
+      <div class="entry"><a href="https://skyview.social/">skyview</a> <span class="desc">skyview - simple, lightweight thread reader for the bluesky platform.</span></div>
+      <div class="entry"><a href="https://midnight.pub/">midnight.pub</a> <span class="desc">midnight.pub - text-based social space and blogging directory for small-web users.</span></div>
+      <div class="entry"><a href="https://old.reddit.com/">old reddit</a> <span class="desc">old reddit - legacy, low-bloat official interface for reddit.</span></div>
+      <div class="entry"><a href="https://news.ycombinator.com/">hacker news</a> <span class="desc">hacker news - plain text layout tech and startup news link aggregator.</span></div>
+      <div class="entry"><a href="https://xcancel.com/">xcancel</a> <span class="desc">xcancel - minimalist, account-free web gateway for reading twitter threads.</span></div>
+    </div>
+
+    <div class="category">
+      <div class="category-name">text, news & knowledge</div>
+      <div class="entry"><a href="https://brutalist.report/">brutalist report</a> <span class="desc">brutalist report - daily news headlines from major global outlets merged into one text layout.</span></div>
+      <div class="entry"><a href="https://text.npr.org/">npr text</a> <span class="desc">npr text - ultra-fast, text-only official feed of national public radio news.</span></div>
+      <div class="entry"><a href="http://68k.news/">68k news</a> <span class="desc">68k news - current news headlines formatted into raw html for older computing hardware.</span></div>
+      <div class="entry"><a href="https://legiblenews.com/">legible news</a> <span class="desc">legible news - clean daily summary of global events sourced entirely from wikipedia data.</span></div>
+      <div class="entry">
+        <a href="https://breezewiki.com/">breezewiki</a><span class="sep">/</span><a href="https://breezewiki.com/">breezewiki.com</a> 
+        <span class="desc">breezewiki / instances: breezewiki.com, breeze.toot.as - cleans up fandom pages by stripping massive ad networks and pop-ups.</span>
+      </div>
+      <div class="entry"><a href="https://scribe.rip/">scribe</a> <span class="desc">scribe - web reader for medium articles that bypasses registration pop-ups and tracking scripts.</span></div>
+      <div class="entry"><a href="https://plaintextsports.com/">plaintext sports</a> <span class="desc">plaintext sports - live sports scores, stats, and play-by-play text feeds formatted in monospace text.</span></div>
+      <div class="entry"><a href="https://mediathekviewweb.de/">mediathekviewweb</a> <span class="desc">mediathekviewweb - lightweight search and streaming layout for german public television broadcasting networks.</span></div>
+      <div class="entry">
+        <a href="https://lingva.ml/">lingva</a><span class="sep">/</span><a href="https://lingva.ml/">lingva.ml</a> 
+        <span class="desc">lingva / instances: lingva.ml, lingva.mirror.theasydot.com - tracker-free, highly responsive alternative frontend for google translate.</span>
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-name">small web hosts & utilities</div>
+      <div class="entry"><a href="https://neocities.org/">neocities</a> <span class="desc">neocities - free web hosting provider focused on static html-only web design.</span></div>
+      <div class="entry"><a href="https://bearblog.dev/">bear blog</a> <span class="desc">bear blog - minimalist blogging platform prioritizing text over appearance themes and layout scripts.</span></div>
+      <div class="entry"><a href="https://mataroa.blog/">mataroa</a> <span class="desc">mataroa - barebones blogging host focusing on high page loading speeds and plain-text file exports.</span></div>
+      <div class="entry"><a href="https://flounder.online/">flounder</a> <span class="desc">flounder - hosting platform designed for writing small personal html profile pages.</span></div>
+      <div class="entry"><a href="https://tildeverse.org/">tildeverse</a> <span class="desc">tildeverse - federation of shared tilde servers hosting personal low-bandwidth websites.</span></div>
+      <div class="entry"><a href="https://rawtext.club/">rawtext club</a> <span class="desc">rawtext club - text-centric network focusing on low-bandwidth web directories and terminal workflows.</span></div>
+      <div class="entry"><a href="https://envs.net/">envs.net</a> <span class="desc">envs.net - tilde community hosting basic shell storage and personal web directory pages.</span></div>
+      <div class="entry"><a href="https://ctrl-c.club/">ctrl-c club</a> <span class="desc">ctrl-c club - tilde network hosting minimalist text-only html directories.</span></div>
+      <div class="entry"><a href="https://wttr.in/">wttr.in</a> <span class="desc">wttr.in - console-oriented weather forecasting tool built for command terminals and text browsers.</span></div>
+      <div class="entry">
+        <a href="https://privatebin.info/">privatebin</a><span class="sep">/</span><a href="https://paste.debian.net/">paste.debian.net</a> 
+        <span class="desc">privatebin / instances: paste.debian.net, bin.privacydev.net - zero-knowledge, minimal footprint tool that encrypts plain text strings inside the browser.</span>
+      </div>
+      <div class="entry"><a href="https://txt.fyi/">txt.fyi</a> <span class="desc">txt.fyi - the most minimalist publishing platform on the web; zero tracking, styling, or configuration.</span></div>
+      <div class="entry"><a href="https://buzzheavier.com/">buzzheavier</a> <span class="desc">buzzheavier - a raw, de-bloated, and fast file-sharing alternative platform with direct links and low resource overhead.</span></div>
     </div>
   </div>
 
@@ -103,110 +163,5 @@
     </p>
   </div>
 
-  <script>
-    const data = [
-      {
-        "name": "search & discovery",
-        "entries": [
-          { "links": [{ "text": "wiby", "url": "https://wiby.me/" }], "description": "wiby - search engine for lightweight, text-centric web pages." },
-          { "links": [{ "text": "marginalia search", "url": "https://search.marginalia.nu/" }], "description": "marginalia search - diy search engine indexing text-heavy, non-commercial websites." },
-          { "links": [{ "text": "frogfind", "url": "http://frogfind.com/" }], "description": "frogfind - strips search results down to basic, ultra-lightweight html." },
-          { "links": [{ "text": "duckduckgo lite", "url": "https://lite.duckduckgo.com/lite/" }], "description": "duckduckgo lite - official html-only, javascript-free version of duckduckgo." },
-          { "links": [{ "text": "the 1mb club", "url": "https://1mb.club/" }], "description": "the 1mb club - directory of websites that weigh less than 1 megabyte." },
-          { "links": [{ "text": "1kb club", "url": "https://1kb.club/" }], "description": "1kb club - directory of highly optimized websites under 1 kilobyte." },
-          { "links": [{ "text": "250kb club", "url": "https://250kb.club/" }], "description": "250kb club - registry showcasing minimalist web designs under 256 kilobytes." },
-          { "links": [{ "text": "512kb club", "url": "https://512kb.club/" }], "description": "512kb club - showcase of clean websites under half a megabyte." },
-          { "links": [{ "text": "no-js club", "url": "https://no-js.club/" }], "description": "no-js club - directory of sites that function entirely without javascript." }
-        ]
-      },
-      {
-        "name": "video, audio & media frontends",
-        "entries": [
-          { "links": [{ "text": "invidious", "url": "https://invidious.io/" }, { "text": "yewtu.be", "url": "https://yewtu.be/" }, { "text": "invidious.nerdvpn.de", "url": "https://invidious.nerdvpn.de/" }], "description": "invidious / instances: yewtu.be, invidious.nerdvpn.de - ad-free, lightweight youtube frontends." },
-          { "links": [{ "text": "piped", "url": "https://piped.video/" }, { "text": "piped.video", "url": "https://piped.video/" }, { "text": "piped.kavin.rocks", "url": "https://piped.kavin.rocks/" }], "description": "piped / instances: piped.video, piped.kavin.rocks - privacy-friendly, resource-efficient youtube frontends." },
-          { "links": [{ "text": "cloudtube", "url": "https://tube.cadence.moe/" }], "description": "cloudtube - minimal web interface alternative for youtube." },
-          { "links": [{ "text": "poketube", "url": "https://poketube.fun/" }], "description": "poketube - lightweight frontend for watching youtube video streams." },
-          { "links": [{ "text": "hyperpipe", "url": "https://hyperpipe.surge.sh/" }], "description": "hyperpipe - snappy, low-bloat interface for youtube music." }
-        ]
-      },
-      {
-        "name": "social, forums & communities",
-        "entries": [
-          { "links": [{ "text": "lobste.rs", "url": "https://lobste.rs/" }], "description": "lobste.rs - minimalist link aggregator for computing and tech discussions." },
-          { "links": [{ "text": "skyview", "url": "https://skyview.social/" }], "description": "skyview - simple, lightweight thread reader for the bluesky platform." },
-          { "links": [{ "text": "midnight.pub", "url": "https://midnight.pub/" }], "description": "midnight.pub - text-based social space and blogging directory for small-web users." },
-          { "links": [{ "text": "old reddit", "url": "https://old.reddit.com/" }], "description": "old reddit - legacy, low-bloat official interface for reddit." },
-          { "links": [{ "text": "hacker news", "url": "https://news.ycombinator.com/" }], "description": "hacker news - plain text layout tech and startup news link aggregator." },
-          { "links": [{ "text": "xcancel", "url": "https://xcancel.com/" }], "description": "xcancel - minimalist, account-free web gateway for reading twitter threads." }
-        ]
-      },
-      {
-        "name": "text, news & knowledge",
-        "entries": [
-          { "links": [{ "text": "brutalist report", "url": "https://brutalist.report/" }], "description": "brutalist report - daily news headlines from major global outlets merged into one text layout." },
-          { "links": [{ "text": "npr text", "url": "https://text.npr.org/" }], "description": "npr text - ultra-fast, text-only official feed of national public radio news." },
-          { "links": [{ "text": "68k news", "url": "http://68k.news/" }], "description": "68k news - current news headlines formatted into raw html for older computing hardware." },
-          { "links": [{ "text": "legible news", "url": "https://legiblenews.com/" }], "description": "legible news - clean daily summary of global events sourced entirely from wikipedia data." },
-          { "links": [{ "text": "breezewiki", "url": "https://breezewiki.com/" }, { "text": "breezewiki.com", "url": "https://breezewiki.com/" }], "description": "breezewiki / instances: breezewiki.com, breeze.toot.as - cleans up fandom pages by stripping massive ad networks and pop-ups." },
-          { "links": [{ "text": "scribe", "url": "https://scribe.rip/" }], "description": "scribe - web reader for medium articles that bypasses registration pop-ups and tracking scripts." },
-          { "links": [{ "text": "plaintext sports", "url": "https://plaintextsports.com/" }], "description": "plaintext sports - live sports scores, stats, and play-by-play text feeds formatted in monospace text." },
-          { "links": [{ "text": "mediathekviewweb", "url": "https://mediathekviewweb.de/" }], "description": "mediathekviewweb - lightweight search and streaming layout for german public television broadcasting networks." },
-          { "links": [{ "text": "lingva", "url": "https://lingva.ml/" }, { "text": "lingva.ml", "url": "https://lingva.ml/" }], "description": "lingva / instances: lingva.ml, lingva.mirror.theasydot.com - tracker-free, highly responsive alternative frontend for google translate." }
-        ]
-      },
-      {
-        "name": "small web hosts & utilities",
-        "entries": [
-          { "links": [{ "text": "neocities", "url": "https://neocities.org/" }], "description": "neocities - free web hosting provider focused on static html-only web design." },
-          { "links": [{ "text": "bear blog", "url": "https://bearblog.dev/" }], "description": "bear blog - minimalist blogging platform prioritizing text over appearance themes and layout scripts." },
-          { "links": [{ "text": "mataroa", "url": "https://mataroa.blog/" }], "description": "mataroa - barebones blogging host focusing on high page loading speeds and plain-text file exports." },
-          { "links": [{ "text": "flounder", "url": "https://flounder.online/" }], "description": "flounder - hosting platform designed for writing small personal html profile pages." },
-          { "links": [{ "text": "tildeverse", "url": "https://tildeverse.org/" }], "description": "tildeverse - federation of shared tilde servers hosting personal low-bandwidth websites." },
-          { "links": [{ "text": "rawtext club", "url": "https://rawtext.club/" }], "description": "rawtext club - text-centric network focusing on low-bandwidth web directories and terminal workflows." },
-          { "links": [{ "text": "envs.net", "url": "https://envs.net/" }], "description": "envs.net - tilde community hosting basic shell storage and personal web directory pages." },
-          { "links": [{ "text": "ctrl-c club", "url": "https://ctrl-c.club/" }], "description": "ctrl-c club - tilde network hosting minimalist text-only html directories." },
-          { "links": [{ "text": "wttr.in", "url": "https://wttr.in/" }], "description": "wttr.in - console-oriented weather forecasting tool built for command terminals and text browsers." },
-          { "links": [{ "text": "privatebin", "url": "https://privatebin.info/" }, { "text": "paste.debian.net", "url": "https://paste.debian.net/" }], "description": "privatebin / instances: paste.debian.net, bin.privacydev.net - zero-knowledge, minimal footprint tool that encrypts plain text strings inside the browser." },
-          { "links": [{ "text": "txt.fyi", "url": "https://txt.fyi/" }], "description": "txt.fyi - the most minimalist publishing platform on the web; zero tracking, styling, or configuration." },
-          { "links": [{ "text": "buzzheavier", "url": "https://buzzheavier.com/" }], "description": "buzzheavier - a raw, de-bloated, and fast file-sharing alternative platform with direct links and low resource overhead." }
-        ]
-      }
-    ];
-
-    function init() {
-      const saved = localStorage.getItem('theme');
-      if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-      else if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
-      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
-      render();
-    }
-
-    function toggleTheme() {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const next = isDark ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    }
-
-    function render() {
-      const app = document.getElementById('app');
-      app.innerHTML = `
-        <div style="font-size:18px;font-weight:700;margin-bottom:32px;border-bottom:1px solid var(--fg);padding-bottom:8px;">caw</div>
-        ${data.map(cat => `
-          <div class="category">
-            <div class="category-name">${cat.name}</div>
-            ${cat.entries.map(e => {
-              const links = e.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.text}</a>`).join('<span class="sep">/</span>');
-              return `<div class="entry">${links} <span class="desc">${e.description}</span></div>`;
-            }).join('')}
-          </div>
-        `).join('')}
-      `;
-    }
-
-    init();
-  </script>
 </body>
 </html>
