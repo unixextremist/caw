@@ -1,5 +1,5 @@
 # caw
-a guide to a better web
+index of well-written / html free websites
 
 # what is this?
 
